@@ -1,0 +1,20 @@
+<div class="well">
+    <a href="#" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-new-window"></span> New</a>
+    <h2>Welcome to my collection</h2>
+    <p>Browse all my music librairies</p>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="library in theLibraries | filter:name">
+        <div class="thumbnail">
+            <img src="http://gbjazz.free.fr/images/galerie/jcoltrane2.jpg" alt="...">
+            <div class="caption">
+                <h3>{{ library.name }} <small>{{ library.creationDate | date }}</small></h3>
+                <p>
+                    <a ng-href="/#/library/{{ library._id }}" class="btn btn-sm btn-info">
+                        Search for music <span class="glyphicon glyphicon-book"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="well">
+    <h1>{{ currentLibrary.name }} <small>{{ currentLibrary.creationDate | date }}</small></h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 ng-show="isMusic">No music for now in {{ currentLibrary.name }}</h2>
+    </div>
+</div>
+
+<div class="row" id="newMusic">
+    <div class="col-md-12">
+        <h3>Add new song</h3>
+        <ul class="list-unstyled" >
+            <li ng-repeat="song in songs">
+                {{ song.author }} - {{ song.name }}
+                <input type="checkbox" id="checkbox-{{ $index }}"
+                       class="checkbox newMusic"
+                       ng-click="addSong(song._id)"/>
+            </li>
+        </ul>
+        <a href ng-click="validNewSongs()" ng-show="isArrayEmpty.length !== 0" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus-sign"></span>Add song</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="music in currentLibrary.musics | filter:name">
+        <div class="thumbnail">
+            <img src="http://gbjazz.free.fr/images/galerie/jcoltrane2.jpg" alt="...">
+            <div class="caption">
+                <h3>{{ music.name }} <small>{{ music.releaseDate  }}</small></h3>
+                <ul>
+                    <li ng-repeat="style in music.styles">
+                        <span class="label label-default">{{ style }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
